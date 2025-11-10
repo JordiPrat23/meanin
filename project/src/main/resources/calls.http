@@ -1,0 +1,76 @@
+### --- VET AVAILABILITY ---
+GET http://localhost:8080/vets/1/availability
+
+###
+PUT http://localhost:8080/vets/1/availability/MONDAY
+Content-Type: application/json
+
+{
+  "startTime": "08:00",
+  "endTime": "16:00"
+}
+
+###
+POST http://localhost:8080/vets/1/exceptions
+Content-Type: application/json
+
+{
+  "date": "2025-10-10",
+  "isAvailable": false,
+  "reason": "Vacation"
+}
+
+---
+### --- MEDICATION MANAGEMENT ---
+GET http://localhost:8080/medications
+
+###
+POST http://localhost:8080/medications/1/batches
+Content-Type: application/json
+
+{
+  "lotNumber": "AMX-NEW",
+  "expiryDate": "2026-10-10",
+  "initialQuantity": 300,
+  "purchasePricePerUnit": 0.30,
+  "receivedDate": "2025-10-06",
+  "storageLocation": "Shelf A"
+}
+
+###
+PUT http://localhost:8080/batches/1
+Content-Type: application/json
+
+{
+  "expiryDate": "2026-12-31",
+  "currentQuantity": 150,
+  "storageLocation": "Refrigerated Zone"
+}
+
+---
+### --- LOYALTY TIERS ---
+GET http://localhost:8080/loyalty-tiers
+
+###
+POST http://localhost:8080/loyalty-tiers
+Content-Type: application/json
+
+{
+  "tierName": "Platinum",
+  "requiredPoints": 1000,
+  "discountPercentage": 15,
+  "benefitsDescription": "15% discount and free grooming"
+}
+
+###
+PUT http://localhost:8080/loyalty-tiers/2
+Content-Type: application/json
+
+{
+  "requiredPoints": 300,
+  "discountPercentage": 7,
+  "benefitsDescription": "7% discount and faster check-in"
+}
+
+###
+DELETE http://localhost:8080/loyalty-tiers/3
